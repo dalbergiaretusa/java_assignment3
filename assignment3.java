@@ -9,19 +9,6 @@ import sheffield.*;
  *
  * @author sdn
  */
-/*MY COLOR CLASS NEEDS
-  ENUM COLOR
-  BOOL TRUE/FALSE IF USED
-*/
-/*
-1 black
-2 blue
-3 brown
-4 green
-5 none
-6 red
-7 white
-8 yellow
 
 public class Assignment3 {
 
@@ -34,7 +21,8 @@ public class Assignment3 {
     }*/
     //robot follows the black line (ideally to the left) until it finds a coloured dot
     boolean used[] = new boolean[9];
-    
+    int posX[] = new int[9];
+    int posY[] = new int[9];    
 
     public static followTheLine(leftMotor, rightMotor, speaker, colorSensor) {
         leftMotor.setSpeed(300);
@@ -62,19 +50,19 @@ public class Assignment3 {
 
       if(colorSensor.getColor()!=color.BLACK && colorSensor.getColor()!=color.WHITE) {
         dotColor=colorSensor.getColor();
-        if(used[dotColor.ordinate()]) {
-          goToDot(dotColor);
+        if(used[dotColor.ordinal()]) {
+          goToDot(colorSensor, leftMotor, rightMotor, dotColor);
         }
         else {
-          posX[dotColor.ordinate()]=positionX;
-          posY[dotColor.ordinate()]=positionY;
-          used[dotColor.ordinate()]=true;
+          posX[dotColor.ordinal()]=positionX;
+          posY[dotColor.ordinal()]=positionY;
+          used[dotColor.ordinal()]=true;
         }
 
       }
     }
     public static goToDot(colorSensor, leftMotor, rightMotor, dotColor) {
-
+      
     }
     public static void makeSound() {
 
